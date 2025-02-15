@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 Gerador de Senhas Seguras</h1>
+        <form action="generate.php" method="POST">
+            <label for="length">Tamanho da senha:</label>
+            <input type="number" name="length" id="length" min="6" max="32" value="12" required>
+            
+            <div class="options">
+                <label><input type="checkbox" name="uppercase" checked> Letras maiúsculas</label>
+                <label><input type="checkbox" name="numbers" checked> Números</label>
+                <label><input type="checkbox" name="special" checked> Caracteres especiais</label>
+            </div>
+            
+            <button type="submit">Gerar Senha</button>
+        </form>
+        
+        <?php if (isset($_GET['password'])): ?>
+            <div class="result">
+                <p>Sua senha gerada:</p>
+                <strong><?php echo htmlspecialchars($_GET['password']); ?></strong>
+            </div>
+        <?php endif; ?>
+    </div>
+</body>
+</html>
